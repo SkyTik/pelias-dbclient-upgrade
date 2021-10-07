@@ -1,6 +1,6 @@
-const elasticsearch = require('@elastic/elasticsearch');
-const settings = require('pelias-config').generate();
+const elasticsearch = require("@elastic/elasticsearch");
 
 module.exports = function (esClientSettings) {
-  return new elasticsearch.Client(esClientSettings ?? settings.esclient ?? {});
+  const config = esClientSettings || { node: "http://localhost:9200" };
+  return new elasticsearch.Client(config);
 };
