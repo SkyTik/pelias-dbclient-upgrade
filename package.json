@@ -1,6 +1,6 @@
 {
-  "name": "pelias-dbclient",
-  "version": "0.0.0-development",
+  "name": "pelias-dbclient-upgrade",
+  "version": "1.0.0",
   "description": "Database client for Pelias import pipelines",
   "engines": {
     "node": ">=14.0.0"
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pelias/dbclient"
+    "url": "git+https://github.com/skytik/pelias-dbclient-upgrade.git"
   },
   "keywords": [
     "pelias",
@@ -25,9 +25,9 @@
   "author": "mapzen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pelias/dbclient/issues"
+    "url": "https://github.com/skytik/pelias-dbclient-upgrade/issues"
   },
-  "homepage": "https://github.com/pelias/dbclient",
+  "homepage": "https://github.com/skytik/pelias-dbclient-upgrade",
   "devDependencies": {
     "intercept-stdout": "^0.1.2",
     "precommit-hook": "^3.0.0",
@@ -50,5 +50,8 @@
   ],
   "release": {
     "success": []
+  },
+  "directories": {
+    "test": "test"
   }
 }
