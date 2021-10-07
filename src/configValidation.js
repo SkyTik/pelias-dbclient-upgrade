@@ -1,7 +1,7 @@
 'use strict';
 
 const Joi = require('@hapi/joi');
-const elasticsearch = require('elasticsearch');
+const elasticsearch = require('@elastic/elasticsearch');
 
 // Schema Configuration
 // dbclient.statFrequency: populated by defaults if not overridden

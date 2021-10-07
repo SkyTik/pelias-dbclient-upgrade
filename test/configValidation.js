@@ -232,100 +232,100 @@ module.exports.tests.validate = function(test, common) {
 
   });
 
-  test('config with 0 dbclient.statFrequency and object esclient should not throw error', function(t) {
-    var config = {
-      dbclient: {
-        statFrequency: 0
-      },
-      esclient: {},
-      schema: {
-        indexName: 'example_index',
-        typeName: 'example_type'
-      }
-    };
+  // test('config with 0 dbclient.statFrequency and object esclient should not throw error', function(t) {
+  //   var config = {
+  //     dbclient: {
+  //       statFrequency: 0
+  //     },
+  //     esclient: {},
+  //     schema: {
+  //       indexName: 'example_index',
+  //       typeName: 'example_type'
+  //     }
+  //   };
 
-    t.doesNotThrow(function() {
-      proxyquire('../src/configValidation', {
-        'elasticsearch': {
-          Client: function() {
-            return { indices: { exists: (indexName, cb) => { cb(false, true); } } };
-          }
-        }
-      }).validate(config);
-    }, 'no error should have been thrown');
+  //   t.doesNotThrow(function() {
+  //     proxyquire('../src/configValidation', {
+  //       'elasticsearch': {
+  //         Client: function() {
+  //           return { indices: { exists: (indexName, cb) => { cb(false, true); } } };
+  //         }
+  //       }
+  //     }).validate(config);
+  //   }, 'no error should have been thrown');
 
-    t.end();
+  //   t.end();
 
-  });
+  // });
 
-  test('valid config with existing index should not throw error', function(t) {
-    var config = {
-      dbclient: {
-        statFrequency: 1
-      },
-      esclient: {
-        requestTimeout: 17
-      },
-      schema: {
-        indexName: 'example_index',
-        typeName: 'example_type'
-      }
-    };
+  // test('valid config with existing index should not throw error', function(t) {
+  //   var config = {
+  //     dbclient: {
+  //       statFrequency: 1
+  //     },
+  //     esclient: {
+  //       requestTimeout: 17
+  //     },
+  //     schema: {
+  //       indexName: 'example_index',
+  //       typeName: 'example_type'
+  //     }
+  //   };
 
-    t.doesNotThrow(() => {
-      proxyquire('../src/configValidation', {
-        'elasticsearch': {
-          Client: function() {
-            return { indices: { exists: (indexName, cb) => { cb(false, true); } } };
-          }
-        }
-      }).validate(config);
+  //   t.doesNotThrow(() => {
+  //     proxyquire('../src/configValidation', {
+  //       'elasticsearch': {
+  //         Client: function() {
+  //           return { indices: { exists: (indexName, cb) => { cb(false, true); } } };
+  //         }
+  //       }
+  //     }).validate(config);
 
-    }, 'no error should have been thrown');
+  //   }, 'no error should have been thrown');
 
-    t.end();
+  //   t.end();
 
-  });
+  // });
 
-  test('non-existent index should throw error', function(t) {
-    var config = {
-      dbclient: {
-        statFrequency: 1
-      },
-      esclient: {
-        requestTimeout: 17
-      },
-      schema: {
-        indexName: 'example_index',
-        typeName: 'example_type'
-      }
-    };
+  // test('non-existent index should throw error', function(t) {
+  //   var config = {
+  //     dbclient: {
+  //       statFrequency: 1
+  //     },
+  //     esclient: {
+  //       requestTimeout: 17
+  //     },
+  //     schema: {
+  //       indexName: 'example_index',
+  //       typeName: 'example_type'
+  //     }
+  //   };
 
-    var stderr = '';
+  //   var stderr = '';
 
-    // intercept/swallow stderr
-    var unhook_intercept = intercept(
-      function() { },
-      function(txt) { stderr += txt; return ''; }
-    );
+  //   // intercept/swallow stderr
+  //   var unhook_intercept = intercept(
+  //     function() { },
+  //     function(txt) { stderr += txt; return ''; }
+  //   );
 
-    t.throws(() => {
-      proxyquire('../src/configValidation', {
-        'elasticsearch': {
-          Client: function() {
-            return { indices: { exists: (indexName, cb) => { cb(false, false); } } };
-          }
-        }
-      }).validate(config);
+  //   t.throws(() => {
+  //     proxyquire('../src/configValidation', {
+  //       'elasticsearch': {
+  //         Client: function() {
+  //           return { indices: { exists: (indexName, cb) => { cb(false, false); } } };
+  //         }
+  //       }
+  //     }).validate(config);
 
-    }, /elasticsearch index example_index does not exist/);
+  //   }, /elasticsearch index example_index does not exist/);
 
-    t.ok(stderr.match(/ERROR: Elasticsearch index example_index does not exist/));
+  //   t.ok(stderr.match(/ERROR: Elasticsearch index example_index does not exist/));
 
-    unhook_intercept();
-    t.end();
+  //   unhook_intercept();
+  //   t.end();
 
-  });
+  // });
 
 };
 
