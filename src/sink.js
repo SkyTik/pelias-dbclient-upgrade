@@ -2,9 +2,9 @@
 var through = require('through2'),
     BatchManager = require('./BatchManager');
 
-function streamFactory( opts ){
+function streamFactory( opts, esClientSettings ){
   opts = opts || {};
-  if( !opts.client ){ opts.client = require('./client')(); }
+  if( !opts.client ){ opts.client = require('./client')(esClientSettings); }
 
   var manager = new BatchManager( opts );
 
