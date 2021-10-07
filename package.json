@@ -1,6 +1,6 @@
 {
   "name": "pelias-dbclient-upgrade",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Database client for Pelias import pipelines",
   "engines": {
     "node": ">=14.0.0"
