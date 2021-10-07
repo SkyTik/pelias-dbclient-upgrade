@@ -1,3 +1,5 @@
+**Disclaimer**: This is a clone project of pelias/dbclient which upgrade elasticsearch client to latest version: @elastic/elasticsearch and also upgrade dependencies. Use it at your own risk.
+
 >This repository is part of the [Pelias](https://github.com/pelias/pelias)
 >project. Pelias is an open-source, open-data geocoder originally sponsored by
 >[Mapzen](https://www.mapzen.com/). Our official user documentation is
